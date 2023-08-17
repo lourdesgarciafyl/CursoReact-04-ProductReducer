@@ -4,3 +4,7 @@
   flex-direction: column;
   flex-grow: 1;
 }
+img{
+  height: 170px;
+  width: 140px
+}

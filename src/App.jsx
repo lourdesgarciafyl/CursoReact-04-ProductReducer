@@ -4,6 +4,7 @@ import Navegacion from './components/Navegacion'
 import FooterPag from './components/FooterPag';
 import AddProduct from './components/admin/AddProduct';
 import ListProduct from './components/admin/ListProduct';
+import Product from './components/product/Product';
 
 function App() {
  
@@ -15,6 +16,9 @@ function App() {
       <div className='row p-5 justify-content-center' style={{ backgroundColor: '#693dae' }}>
         <AddProduct />
         <ListProduct />
+      </div>
+      <div className='row p-5'>
+        < Product/>
       </div>
     </section>
     <FooterPag />
