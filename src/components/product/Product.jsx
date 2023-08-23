@@ -1,17 +1,18 @@
-const Product = () => {
+const Product = ({products}) => {
   return (
-    <div className="col-lg-4">
+    <>
+    {products.map((product) => (
+      <div key={product.id} className="col-lg-4">
       <ul className="list-group shadow">
         <li className="list-group-item">
           <div className="media align-items-lg-center flex-column flex-lg-row p-3">
             <div className="media-body order-2 order-lg-1">
-              <h5 className="mt-0 font-weight-bold mb-2">Apple iPhone XR</h5>
+              <h5 className="mt-0 font-weight-bold mb-2">{product.title}</h5>
               <p className="font-italic text-muted mb-0 small">
-                128 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 7MP
-                Front Camera A12 Bionic Chip Processor
+               {product.description}
               </p>
               <div className="d-flex align-items-center justify-content-between mt-1">
-                <h6 className="font-weight-bold my-2">$120.000</h6>
+                <h6 className="font-weight-bold my-2">{product.price}</h6>
               </div>
             </div>
             <img
@@ -29,6 +30,8 @@ const Product = () => {
         </li>
       </ul>
     </div>
+    ))}
+  </>  
   );
 };
 export default Product;
