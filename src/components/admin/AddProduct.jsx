@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRef } from "react";
 
-const AddProduct = () => {
+const AddProduct = ({ onClickAddProduct }) => {
   const titleRef = useRef(null);
   const categoryRef = useRef(null);
   const priceRef = useRef(null);
@@ -58,7 +58,9 @@ const AddProduct = () => {
             onChange={(event) => onChangeForm(event.target.value, descriptionRef.current.name)}
           ></textarea>
         </div>
-        <button className="btn btn-info">Guardar</button>
+        <button 
+        className="btn btn-info"
+        onClick={(event) => onClickAddProduct(event, form)}>Guardar</button>
       </form>
     </div>
   );
