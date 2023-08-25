@@ -1,4 +1,4 @@
-const ListProduct = () => {
+const ListProduct = ({products, onDeleteProduct}) => {
 
     return (
       <div className="col-lg-7" >
@@ -8,19 +8,28 @@ const ListProduct = () => {
                   <th scope="col">ID</th>
                   <th scope="col">PRODUCTO</th>
                   <th scope="col">PRECIO</th>
-                  <th scope="col"></th>
+                  <th scope="col" className="text-center">Editar</th>
+                  <th scope="col"className="text-center">Borrar</th>
                   </tr>
               </thead>
               <tbody>
-                  <tr>
-                  <th scope="row">SKU-78765</th>
-                  <td>Apple iPhone XR (Red, 128 GB)</td>
-                  <td>$125.365</td>
-                  <td className="text-center">
-                      <button className='btn btn-info mx-2 w-25'>Editar</button> 
-                      <button className='btn btn-danger w-25 pe-5'>Eliminar</button>
-                  </td>
-                  </tr>
+                {products.map((product) => (
+                            <tr key={product.id}>
+                            <th scope="row">{product.id}</th>
+                            <td>{product.title}</td>
+                            <td>{product.price}</td>
+                            <td className="text-center">
+                            <button className='btn btn-info mx-2 w-50'>Editar</button> 
+                            </td>
+                            <td className="text-center">
+                                <button 
+                                   className='btn btn-danger w-50' 
+                                   onClick={()=>onDeleteProduct(product.id)}>
+                                    Eliminar
+                                </button>
+                            </td>
+                            </tr>
+                ))}
               </tbody>
           </table>
       </div>

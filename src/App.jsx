@@ -36,9 +36,27 @@ const initialProducts = [
 function App() {
   const [products, dispatch] = useReducer(productReducer, initialProducts);
 
-  const onClickAddProduct = (e, form) => {
+  const onClickAddProduct = (e, formValue) => {
     e.preventDefault();
-    console.log(form)
+    const newProdObj = {
+      id: "sku-0005",
+      title: formValue.title,
+      category: formValue.category,
+      price: formValue.price,
+      description: formValue.description
+    }
+    dispatch({
+      type: "[Product] - ADD-PRODUCT",
+      payload: newProdObj 
+    })
+  }
+
+  const onDeleteProduct = (productId) => {
+   const productsFilter = products.filter((prod) => prod.id != productId)
+   dispatch({
+    type: "[Product] - DELETE-PRODUCT",
+    payload: productsFilter
+   })
   }
 
   return (
@@ -49,7 +67,7 @@ function App() {
       <div className='row p-5 justify-content-center' style={{ backgroundColor: '#693dae' }}>
         <AddProduct  
         onClickAddProduct={onClickAddProduct} />
-        <ListProduct />
+        <ListProduct products={products} onDeleteProduct={(value) => onDeleteProduct(value)}/>
       </div>
       <div className='row p-5'>
         < Product products={products}/>
