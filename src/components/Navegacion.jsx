@@ -1,33 +1,33 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+
 
 const Navegacion =() => {
+  const {user, login} = useContext(AuthContext)
+
   return (
-    <Navbar expand="lg" className="">
-      <Container>
-        <Navbar.Brand href="#home">RollingProducts</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav " />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#link">Login</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <header className="p-3 text-bg-dark">
+    <div className="container-fluid">
+        <div className="px-lg-5 d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <div className="nav col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
+                <a href="#" className="navbar-brand d-flex align-items-center">
+                    <strong>PRDCEL</strong>
+                </a>
+            </div>
+
+            <div className="text-end">
+            {user?.name} 
+            <button 
+                type="button" 
+                className="btn btn-outline-light m-2"
+                onClick={login}
+            >
+                Login
+            </button>
+            </div>
+        </div>
+    </div>
+</header>
   );
 }
 

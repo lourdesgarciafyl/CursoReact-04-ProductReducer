@@ -5,8 +5,9 @@ import FooterPag from "./components/FooterPag";
 import AddProduct from "./components/admin/AddProduct";
 import ListProduct from "./components/admin/ListProduct";
 import Product from "./components/product/Product";
-import { useReducer, useState } from "react";
+import { useContext, useReducer } from "react";
 import { productReducer } from "./reducers/productReducer";
+import { AuthContext } from "./contexts/AuthContext";
 
 const initialProducts = [
   {
@@ -33,12 +34,9 @@ const initialProducts = [
 ];
 
 function App() {
-  const [user, setUser] = useState({
-    isLogued: false,
-    name: "Joaquín Flores",
-  });
 
   const [products, dispatch] = useReducer(productReducer, initialProducts);
+  const {user} = useContext(AuthContext);
 
   const onClickAddProduct = (e, formValue) => {
     e.preventDefault();
