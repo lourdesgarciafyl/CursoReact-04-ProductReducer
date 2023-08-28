@@ -1,6 +1,8 @@
+import { types } from "../types/types";
+
 export const productReducer = (state = [], action) => {
   switch (action.type) {
-    case "[Product] - ADD-PRODUCT":
+    case types.products.addType:
       return [
         ... state,
         action.payload
@@ -10,7 +12,7 @@ export const productReducer = (state = [], action) => {
       console.log("Editar");
       break;
 
-    case "[Product] - DELETE-PRODUCT":
+    case types.products.deleteType:
      return action.payload
 
     default:
