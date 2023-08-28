@@ -3,7 +3,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 
 const Navegacion =() => {
-  const {user, login} = useContext(AuthContext)
+  const {state, login, logout} = useContext(AuthContext)
 
   return (
     <header className="p-3 text-bg-dark">
@@ -16,14 +16,24 @@ const Navegacion =() => {
             </div>
 
             <div className="text-end">
-            {user?.name} 
-            <button 
-                type="button" 
-                className="btn btn-outline-light m-2"
-                onClick={login}
-            >
-                Login
-            </button>
+            {state?.isLogued && (
+                            <button 
+                            type="button" 
+                            className="btn btn-outline-light m-2"
+                            onClick={logout}
+                        >
+                            Logout
+                        </button>
+            )} 
+            {!state?.isLogued && (
+                 <button 
+                 type="button" 
+                 className="btn btn-outline-light m-2"
+                 onClick={login}
+             >
+                 Login
+             </button>
+            )}
             </div>
         </div>
     </div>

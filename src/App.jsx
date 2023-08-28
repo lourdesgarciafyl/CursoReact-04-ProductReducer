@@ -36,7 +36,7 @@ const initialProducts = [
 function App() {
 
   const [products, dispatch] = useReducer(productReducer, initialProducts);
-  const {user} = useContext(AuthContext);
+  const {state: user} = useContext(AuthContext);
 
   const onClickAddProduct = (e, formValue) => {
     e.preventDefault();
