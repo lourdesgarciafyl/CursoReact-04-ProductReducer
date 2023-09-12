@@ -5,8 +5,7 @@ import FooterPag from "./components/FooterPag";
 import AddProduct from "./components/admin/AddProduct";
 import ListProduct from "./components/admin/ListProduct";
 import Product from "./components/product/Product";
-import { useContext, useReducer } from "react";
-import { productReducer } from "./reducers/productReducer";
+import { useContext,} from "react";
 import { AuthContext } from "./contexts/AuthContext";
 import { ProductContext } from "./contexts/ProductContext";
 
